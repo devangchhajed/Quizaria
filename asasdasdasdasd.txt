@@ -1,0 +1,187 @@
+<?php
+	include 'common_header.php'; 
+	include 'loginModal.php'; 
+	include 'registerModal.php'; 
+	include 'notificationModal.php'; 
+?>
+
+<style>
+.button-success, .button-error {
+background:#3a78b8;
+color:#ffffff;
+padding:5px;
+padding-left:4px;
+padding-right:4px;
+font-size:15px;
+font-family:'arial';
+border-radius:4px;
+border:1px solid #87b0d9;
+margin-bottom:4px;
+line-height:34px;
+
+}
+</style>
+  
+<div class="container" style="padding-top:50px;margin-bottom:100px;">
+	<h2 style="text-align:center">Round 1</h3>
+	<hr>
+	<div class="questionImg">
+		<img src="">
+	</div>
+
+	
+<div class="row">
+
+<div class=" col-sm-2">
+	<div class="alert alert-info" style="margin:10px;">
+		<strong>Time left : </strong>	
+		<div id='timer' style="display:inline;"></div>
+		<br>&nbsp;
+		<div class="progress">
+			<div class="progress-bar progress-bar-striped active" id="pbar" style="width:0%">
+				<div id='pbarp' style="display:inline;"></div>
+			</div>
+		</div>
+	</div>
+	<div class="alert alert-info" style="margin:10px;">
+	ankn
+	</div>
+</div>	
+	
+	<div class="col-sm-8" style="margin:10px;text-align:center;">
+
+	<div class="row well">
+		Question 1
+		</div>
+		<div class="row" style="width:100%">
+			<button type="button" style="margin:10px;" class="btn btn-primary">Option 1</button>
+			<button type="button" style="margin:10px;"  class="btn btn-primary">Option 2</button>
+		</div>
+		<div class="row" style="width:100%">
+			<button type="button" style="margin:10px;"  class="btn btn-primary">Option 3</button>
+			<button type="button" style="margin:10px;"  class="btn btn-primary">Option 4</button>
+		</div>
+	</div>
+
+</div>
+
+
+
+	
+<?php require 'config.php';
+
+function newQuestion($qno)
+{
+	$quesid; 
+	$ques; 
+	$ans1; 
+	$ans2; 
+	$ans3; 
+	$ans4; 
+	$rans; 
+	$rans; 
+
+	$sql="select * from qna where id=".$qna;
+	$result = $conn->query($sql);
+	
+	if($result->num_rows>0)
+	{
+		while($row=$result->fetch_assoc())
+		{
+			$quesid=$row["id"]; 
+			$ques=$row["ques"]; 
+			$ans1=$row["ans1"]; 
+			$ans2=$row["ans2"]; 
+			$ans3=$row["ans3"]; 
+			$ans4=$row["ans4"]; 
+			$rans[$i]=$row["rans"]; 
+			$rans[$i]=$row["points"]; 
+		}
+	}	
+}
+
+	
+	$quesseries = array();
+for($i=1;$i<=10;$i++)
+{	
+	$quesseries[$i]=rand(1,10);
+}
+
+	$sql="select * from qna";
+	$result = $conn->query($sql);
+	
+	if($result->num_rows>0)
+	{
+		$i=1;
+		while($row=$result->fetch_assoc())
+		{
+			$quesid[$i]=$row["id"]; 
+			$ques[$i]=$row["ques"]; 
+			$ans1[$i]=$row["ans1"]; 
+			$ans2[$i]=$row["ans2"]; 
+			$ans3[$i]=$row["ans3"]; 
+			$ans4[$i]=$row["ans4"]; 
+			$rans[$i]=$row["rans"]; 
+			$rans[$i]=$row["points"]; 
+			$i++;
+		}
+	}
+	$conn->close();
+
+	shuffle($quesseries);
+//	print_r($quesseries);
+
+
+	for($i=0;$i<10;$i++)
+{
+	$ival=$quesseries[$i];
+//	echo $quesid[$ival].$ques[$ival]."</br>";
+}
+
+
+ ?>	
+	
+	
+	
+	
+	
+	
+	
+</div>
+
+
+
+
+<script>
+ 
+   var tsec = 60; 
+   var c = 60;
+    var t;
+    timedCount();
+    function timedCount() {
+    	var hours = parseInt( c / 3600 ) % 24;
+    	var minutes = parseInt( c / 60 ) % 60;
+    	var seconds = c % 60;
+    	var result = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds  < 10 ? "0" + seconds : seconds);
+    	$('#timer').html(result);
+		var x=((tsec-c)/tsec)*100;
+    	$('#pbar').css("width",x+"%");
+		var xx=x.toFixed()+"% ";
+    	$('#pbarp').html(xx);
+        if(c == 0 ){
+        	setConfirmUnload(false);
+            $("#quiz_form").submit();
+        }
+        c = c - 1;
+        t = setTimeout(function(){ timedCount() }, 1000);
+    }
+ 
+
+</script>
+
+<?php
+ include'associates.php'; 
+
+ include 'common_footer.php'; ?>
+</body>
+</html>

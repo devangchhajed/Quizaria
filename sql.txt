@@ -1,0 +1,47 @@
+CREATE DATABASE zutsgame;
+
+CREATE TABLE users (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+email VARCHAR(50) NOT NULL UNIQUE,
+phone VARCHAR(30) NOT NULL,
+password VARCHAR(30) NOT NULL,
+college VARCHAR(60) NOT NULL,
+score int(10),
+ttime int(20),
+dimage varchar(20),
+reg_date TIMESTAMP
+)
+
+CREATE TABLE notification (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+message varchar(300),
+regdate TIMESTAMP
+)
+
+CREATE TABLE score (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+email VARCHAR(50) NOT NULL,
+quesid VARCHAR(50),
+timetaken int(20),
+points int (5),
+reg_date TIMESTAMP
+)
+
+CREATE TABLE qna(
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ques VARCHAR(200),
+ans1 VARCHAR(50),
+ans2 VARCHAR(50),
+ans3 VARCHAR(50),
+ans4 VARCHAR(50),
+rans VARCHAR(50),
+points INT(5)
+)
+
+CREATE TABLE feedback(
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(30),
+feedback VARCHAR(300)
+)
+

@@ -1,0 +1,89 @@
+.shadow-wrap {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  -ms-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  width: 100%;
+  height: 100%;
+  max-width: 1600px;
+  box-shadow: 0 0 48px 0 black;
+  pointer-events: none;
+}
+
+
+.hero-image {
+  background-position: center;
+  background-size: cover;
+  height: 37vw;
+  max-height: 300px;
+}
+
+
+.han-solo-bg {
+  background-image: url("../images/dp/bannerbg.jpg");
+}
+
+.profile-info {
+  z-index: 1;
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+.profile-info .profile-image {
+  position: relative;
+  top: -80px;
+  display: block;
+  width: 150px;
+  margin: 0 auto -16px;
+  border-radius: 100%;
+  background-color: white;
+}
+
+.profile-detail {
+  position: relative;
+  top: -80px;
+  display: block;
+  width: 150px;
+  margin: 0 auto -16px;
+}
+.profile-info .profile-image .circular-image-shadow {
+  display: block;
+  position: absolute;
+  bottom: 88%;
+  left: 50%;
+  width: 208px;
+  height: 160px;
+  overflow-x: visible;
+  overflow-y: hidden;
+  -ms-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+.profile-info .profile-image .circular-image-shadow:before {
+  content: "";
+  display: block;
+  position: relative;
+  top: 84%;
+  width: 128px;
+  height: 144px;
+  margin: auto;
+  border-radius: 100%;
+  box-shadow: 0 0 32px 0px rgba(0, 0, 0, 0.6);
+}
+.profile-info .profile-image img {
+  position: relative;
+  width: 100%;
+  border-radius: 100%;
+  box-shadow: 0 0 0 8px #f6f6f6;
+}
+.profile-info .name {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 100;
+}
